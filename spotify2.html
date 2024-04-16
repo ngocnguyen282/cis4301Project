@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Trend 1</title>
+    <title>Trend 2</title>
     <link rel="stylesheet" type="text/css" href="spotify2.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
     <form method="post" class="form-inline" action="/trend_2">
       <div class="form-group">
         <div class="input-group">
-            <span class="input-group-addon">Please select Number of top playlists to be included in average X</span>
+            <span class="input-group-addon">Please select Number of followers to be included in average X</span>
                 <select name="Dropdown" class="selectpicker form-control">
                   {% for r in data1 %}  
                   <option value="{{ r }}">{{ r  }}</option>
@@ -36,18 +36,13 @@
     <table border="1">
         <tr>
             <th>Year</th>
-            <th></th>
-            <th>Genres of playlists over time</th>
-            <th>Genders of playlist artists over time</th>
-            <th>Throwback popularity over time</th>
+            <th>Average number of playlist followers that year using the top X playlists</th>
         </tr>
         {% for row in data %}
         <tr>
             <td>{{ row[0] }}</td>
             <td>{{ row[1] }}</td>
-            <td>{{ row[2] }}</td>
-            <td>{{ row[3] }}</td>
-            <td>{{ row[4] }}</td>
+    
         </tr>
         {% endfor %}
     </table>

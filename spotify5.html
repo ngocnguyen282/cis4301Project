@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Trend 1</title>
+    <title>Trend 5</title>
     <link rel="stylesheet" type="text/css" href="spotify5.css">
 </head>
 <body>
     <h2>
-        Average number of followers of each playlist (among the top X playlists) over the past Y years
+        Average number of long songs (> 4 minutes) in each playlist (among the top X playlists) over the past Y years
     </h2>
 
 
-    <form method="post" class="form-inline" action="/trend_2">
+    <form method="post" class="form-inline" action="/trend_5">
       <div class="form-group">
         <div class="input-group">
-            <span class="input-group-addon">Please select Number of top playlists to be included in average X</span>
+            <span class="input-group-addon">Please select Number of long songs to be included in average X</span>
                 <select name="Dropdown" class="selectpicker form-control">
                   {% for r in data1 %}  
                   <option value="{{ r }}">{{ r  }}</option>
@@ -36,18 +36,12 @@
     <table border="1">
         <tr>
             <th>Year</th>
-            <th></th>
-            <th>Genres of playlists over time</th>
-            <th>Genders of playlist artists over time</th>
-            <th>Throwback popularity over time</th>
+            <th>Average number of long songs in playlists that year using the top X playlists</th>
         </tr>
         {% for row in data %}
         <tr>
             <td>{{ row[0] }}</td>
             <td>{{ row[1] }}</td>
-            <td>{{ row[2] }}</td>
-            <td>{{ row[3] }}</td>
-            <td>{{ row[4] }}</td>
         </tr>
         {% endfor %}
     </table>
