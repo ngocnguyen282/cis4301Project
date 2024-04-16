@@ -2,13 +2,13 @@
 <html>
 <head>
     <title>Trend 1</title>
-    <link rel="stylesheet" type="text/css" href="spotify2.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='spotify2.css') }}">
 </head>
 <body>
     <h2>
         Explore the evolution of popular playlist lengths over time with our web application. Gain insights into how the duration of popular playlists has changed over different time periods. Analyze trends and discover the dynamics of playlist lengths, uncovering the evolution of music preferences and trends.
     </h2>
-
+    <h3>QUERY 1 [Average length of each playlist (among the top X playlists) over the past Y years]</h3>
 
     <form method="post" class="form-inline" action="/trend_1">
       <div class="form-group">
@@ -46,8 +46,8 @@
         {% endfor %}
     </table>
 
-
-    <iframe id="serviceFrameSend" src="https://th.bing.com/th/id/R.92a316c8e347760384bc29d9a061e37f?rik=yec87%2fuUyNxNUQ&riu=http%3a%2f%2fwww.engineeringintro.com%2fwp-content%2fuploads%2f2012%2f04%2fBar-Graph1.png&ehk=fAoooM1tHXhW87DViZdygA1b%2bn%2blmZsiZGqhqOWpoa8%3d&risl=&pid=ImgRaw&r=0" width="1000" height="500"  frameborder="0">
+    <!-- Replace the iframe with a div for the bar graph -->
+    <div id="barGraph" style="width: 1000px; height: 500px; background-image: url('https://www.example.com/path/to/your/image.png'); background-size: contain;"></div>
 
 </body>
 </html>

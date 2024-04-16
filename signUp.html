@@ -1,0 +1,33 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-sacle=1">
+    <title>SPOTIFY</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='spotify.css') }}">
+</head>
+<body>
+	<!-- <span class="nav fr"><a href="#">Login</a></span> -->
+
+    <!--first page-->
+	<div class="layer">
+		<div class="title clearfix">Spotify</div>
+		<span class="body clearfix">
+			"Welcome to Spotify Playlist Analytics! With our web application, you can explore trends and insights of playlists in the Spotify dataset. Choose your queries of interest, specify a time range, and view instant results. Discover the stories behind music playlists and delve into popular trends. Start your exploration journey now!"
+		</span>
+		<span class="signUp fr">
+			<span class="signUpTitle">Sign Up</span>
+			<form action="/signUp" method="POST">
+				<input type="text" name="Username" style="color:#999" placeholder="Username"onfocus="if(this.value=='Username'){this.value='';this.style.color='#424242'}" onblur="if(this.value==''){this.value='User Name';this.style.color='#999'}">
+				<input type="text" name="Email" style="color:#999" placeholder="Email"onfocus="if(this.value=='Email'){this.value='';this.style.color='#424242'}" onblur="if(this.value==''){this.value='Email';this.style.color='#999'}">
+				<input type="password" name="Password" style="color:#999" placeholder="Password"onfocus="if(this.value=='Password'){this.value='';this.style.color='#424242'}" onblur="if(this.value==''){this.value='Password';this.style.color='#999'}">
+				<button>Submit</button>
+			</form>
+			<!-- Display error message if present -->
+            {% if error %}
+            	<div class="error-message">{{ error }}</div>
+            {% endif %}
+			<p class="formMessage" style="text-align: center; font-size: 14px; margin-top: 10px;">Already have an account? <a style="color:#4183FF" href="{{ url_for('logIn') }}">Login</a></p>
+		</span>
+	</div>
+</body>
+</html>
