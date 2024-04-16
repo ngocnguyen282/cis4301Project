@@ -113,7 +113,7 @@ body{
 	border-radius: 10px;
 	background-color: white;
 	width: 350px;
-	height: 350px;
+	height: 400px;
 	position: relative;
 	margin-top: -325px;
 	margin-right: 150px;
@@ -130,7 +130,7 @@ body{
 
 input{
 	background-color: #EFEFEF;
-	margin-top: 30px;
+	margin-top: 20px;
 	margin-left: 25px;
 	border-radius: 20px;
 	width: 300px;
