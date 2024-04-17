@@ -1,6 +1,7 @@
 html{
 	scroll-behavior: smooth;
 }
+
 body,p,h1,h2,h3,h4{
 	margin: 0;
 }
@@ -37,6 +38,13 @@ button{
 	border: none;
 }
 
+.middle-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
 body{
 	font-family: arial;
 	line-height: 1.5;
@@ -53,7 +61,7 @@ th,td{
 }
 body{
     margin: 0;
-    padding: 0;
+    padding: 50px;
     background-image: linear-gradient(to bottom, #e8b7e3, #d9d0da);
     background-size: cover;
     background-position: center;

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Playlist Analytics - Trend 1</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='spotify1.css') }}">
+</head>
+<body>
+    <h2 id="heading">
+        Average length of each playlist (among the top Y playlists) over the past X years
+    </h2>
+
+    <form method="POST" class="form-inline" action="/query1" onsubmit="updateHeading(event)">
+      <div class="form-group">
+        <div class="input-group">
+            <label for="Y">Please select Number of top playlists to be included in average Y</label>
+            <select id="Y" name="Y">
+                <option value="5">5 playlists</option>
+                <option value="10">10 playlists</option>
+                <option value="15">15 playlists</option>
+            </select><br/>
+            <label for="X">Please select Number of recent years X</label>
+            <select id="X" name="X">
+                <option value="5">5 years</option>
+                <option value="10">10 years</option>
+                <option value="15">15 years</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </form>
+    <br/>
+    <table border="1">
+        <tr>
+            <th>Year</th>
+            <th>Average playlist length that year</th>
+        </tr>
+
+    </table>
+
+    <canvas id="barChart" width="300" height="100"></canvas>
+
+    <script>
+        // Get the data from Flask passed to the template
+        var data = {{ data | tojson }};
+
+        // Extract modified_at and duration_ms from the data
+        var labels = data.map(function(item) {
+            return item[1];  // Assuming modified_at is the second column
+        });
+        var durationMs = data.map(function(item) {
+            return item[4];  // Assuming duration_ms is the fifth column
+        });
+
+        // Create the bar chart
+        var ctx = document.getElementById('barChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Duration (ms)',
+                    data: durationMs,
+                    backgroundColor: '#fc3468',
+                    borderColor: '#ff084a',
+                    borderWidth: 1.5
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+        // Function to update the heading text based on default values
+        document.addEventListener('DOMContentLoaded', function() {
+            var Y_value = document.getElementById('Y').value;
+            var X_value = document.getElementById('X').value;
+            document.getElementById('heading').innerText = `Average length of each playlist (among the top ${Y_value} playlists) over the past ${X_value} years`;
+        });
+    </script>
+    <div class="middle-section">
+        <a style="color:#4183FF; margin-right: 10px;" href="{{ url_for('query1') }}"><button style="text-align: center;" type="text" class="inline">Query 1</button></a>
+        <a style="color:#4183FF; margin-right: 10px;" href="{{ url_for('query2') }}"><button style="text-align: center;" type="text" class="inline">Query 2</button></a>
+        <a style="color:#4183FF; margin-right: 10px;" href="{{ url_for('query3') }}"><button style="text-align: center;" type="text" class="inline">Query 3</button></a>
+        <a style="color:#4183FF; margin-right: 10px;" href="{{ url_for('query4') }}"><button style="text-align: center;" type="text" class="inline">Query 4</button></a>
+    </div>
+</body>
+</html>

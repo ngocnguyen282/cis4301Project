@@ -37,6 +37,13 @@ button{
 	border: none;
 }
 
+.middle-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
 body{
 	font-family: arial;
 	line-height: 1.5;
@@ -53,7 +60,7 @@ th,td{
 }
 body{
     margin: 0;
-    padding: 0;
+    padding: 50px;
     background-image: linear-gradient(to bottom, #71f6ff, #daf0f6);
     background-size: cover;
     background-position: center;
